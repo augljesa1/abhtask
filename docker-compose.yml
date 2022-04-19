@@ -1,0 +1,26 @@
+version: "3.1"
+services:
+  #spring-boot service
+  app:
+    container_name: springboot-postgresql
+    build: ./spring-boot-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresqldb
+  #postgresql from dockerhub
+  postgresqldb:
+    image: postgres:10.20-alpine
+    ports:
+      - "5432:5432"
+  #configuration for postgresql
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=testdb
+  #NodeJs application
+  nodejs_service:
+    container_name: nodejs
+    build: ./node-app
+    ports:
+      - 8081:8081
