@@ -10,6 +10,6 @@ spring:
       temp.use_jdbc_metadata_defaults: false
 
   datasource:
-    url: jdbc:postgresql://postgresqldb:5542/testdb
+    url: jdbc:postgresql://postgresqldb:5432/testdb
     username: postgres
     password: postgres
